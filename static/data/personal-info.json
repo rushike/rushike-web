@@ -1,0 +1,20 @@
+{
+    "type" : "personal-info",
+    "data" : {
+        "personal-info" : {
+            "identity" : {
+                "name" : "Rushikesh Bangar",
+                "pet-name" : "Rushi",
+                "firstname" : "Rushikesh",
+                "lastname" : "Bangar"
+            },
+            "contact-details" : {
+                "email" : "rushike.ab1@gmail.com",
+                "mobile" : "7745023872",
+                "address" : " Plot 18, Shivnagar, Near Shivniketan Tower, Pipeline Rd. Savedi, Ahmednagar",
+                "current-city" : "Ahmednagar",
+                "pincode" : 414003
+            }
+        }
+    }
+}

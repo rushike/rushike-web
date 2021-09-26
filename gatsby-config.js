@@ -20,36 +20,6 @@ module.exports = {
     designations: [
       `BE, Computer Engineer`
     ],
-    sites  : {
-      "git" : {
-        site : "github.com",
-        name :  `rushike`,
-        link : `https://github.com/rushike`,
-        type : `coding`
-      },
-      "freecodecamp" : {
-        site : "",
-        name :  `rushike`,
-        link : `https://github.com/rushike`,
-        type : `coding`
-      },
-      "linkden" : {
-        site : `https://linkedin.com/`,
-        link : `https://linkedin.com/`,
-        type : `social`
-      },
-      "gmail" : {
-        site : `gmail.com`,
-        email : `rushike.ab1@gmail.com`,
-        type : `social`
-      },
-      "instagram" : {
-        site : `https://www.instagram.com/`,
-        name : `rushikeshrushi`,
-        link : `https://www.instagram.com/rushirushikesh/`,
-      }
-
-    },
     readingList: [
       {
         title: `Sapiens: A Brief History of Humankind`,
@@ -122,7 +92,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#fff`,
         display: `standalone`,
-        icon: `${__dirname}/static/favicon.ico`, // This path is relative to the root of the site.
+        icon: `${__dirname}/static/images/my-photos/Profile2.jpg`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
@@ -139,6 +109,14 @@ module.exports = {
       options: {
         color: `tomato`,
         showSpinner: true,
+      },
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./static/data/`,
+        typeName: `Json`
       },
     },
   ],

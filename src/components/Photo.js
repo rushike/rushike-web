@@ -3,12 +3,28 @@ import PropTypes from 'prop-types';
 
 const imgWithClick = { cursor: 'pointer' };
 
-const Photo = ({ index, onClick, photo, margin, direction, top, left, key }) => {
+
+export const PhotoRounded = ({ index, onClick, photo, margin, direction, top, left, key })=>{
+  return <Photo 
+          rounded 
+          index = {index}
+          onClick = {onClick}
+          photo = {photo}
+          margin = {margin}
+          direction = {direction}
+          top = {top}
+          left = {left}
+          key = {key + "12"}
+          />
+}
+
+const Photo = ({ index, onClick, photo, margin, direction, top, left, key, rounded = false }) => {
+  var radius = rounded ? "50%" : "30px";
   const imgStyle = { 
       margin: margin, 
       display: 'block',  
       border: "1px solid #ddd",
-    	borderRadius: "30px",
+    	borderRadius: radius,
   		padding: "5px" 
 		};
   if (direction === 'column') {

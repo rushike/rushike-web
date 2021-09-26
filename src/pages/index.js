@@ -8,6 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default ({ data }) => {
   const { unemployed, firstName, lastName, occupation, sites : mysites } = data.site.siteMetadata
+  const personal_info = data.allDataJson.edges[0].node.data.personal_info || data.allDataJson.edges[1].node.data.personal_info;
+  const sites = data.allDataJson.edges[0].node.data.sites  || data.allDataJson.edges[1].node.data.sites;
+  const sites_filtered = sites.filter(v=>v.show)
   const { dark } = useContext(ThemeContext)
   return (
     <PageLayout>
@@ -27,69 +30,43 @@ export default ({ data }) => {
         )}
         <Container className="py-0 my-0">
           <h1
-            style={{
-              fontSize: "5rem",
-              color: "black",
-            }}
+            // style={{
+            //   fontSize: "5rem",
+            //   color: "black",
+            // }}
+            className = "index-page-head-name"
           >
-            <span className="first-name">{firstName}</span>&nbsp;
-            <span className="last-name">{lastName}</span>
+            <span className="first-name">{personal_info.identity.firstname}</span>&nbsp;
+            <span className="last-name">{personal_info.identity.lastname}</span>
           </h1>
           <p>
             <i>
-              {occupation} by day,&nbsp;
-              {dark ? `Imperial enforcer by night` : `Rebel scum by night`}
+              {occupation},&nbsp;
+              {dark ? `working for better designs and functions.` : `Engineered for excellence`}
             </i>
           </p>
         </Container>
         <hr className="my-3 w-25" />
         <div className="d-md-inline-flex icons-container">
+          {
+            sites_filtered.map(v=>{
+              return (
+                <a
+                  href={v.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={["fab", v.fab_icon]}
+                    className={`icons ${v.class_name || v.fab_icon}`}
+                    title={v.name}
+                  />
+                </a>
+                )
+            })
+          }
           <a
-            href="https://www.github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "github"]}
-              className="icons github"
-              title="Github"
-            />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "linkedin"]}
-              className="icons linkedin"
-              title="LinkedIn"
-            />
-          </a>
-          <a
-            href="https://www.freecodecamp.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "free-code-camp"]}
-              className="icons fcc"
-              title="FreeCodeCamp"
-            />
-          </a>
-          <a
-            href="https://www.hackerrank.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "hackerrank"]}
-              className="icons hr"
-              title="Hackerrank"
-            />
-          </a>
-          <a
-            href="mailto:johndoe@gmail.com"
+            href="mailto:rushikeslr@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -99,13 +76,13 @@ export default ({ data }) => {
               title="e-mail"
             />
           </a>
-          <a href="../../resume.pdf" target="_blank" download>
+          {/* <a href="../../resume.pdf" target="_blank" download>
             <FontAwesomeIcon
               icon={["fas", "file-alt"]}
               className="icons file"
               title="Resume"
             />
-          </a>
+          </a> */}
         </div>
       </Container>
     </PageLayout>
@@ -120,33 +97,38 @@ export const query = graphql`
         firstName
         lastName
         occupation
-        sites {
-          freecodecamp {
-            link
-            name
-            site
-            type
-          }
-          git {
-            link
-            name
-            site
-            type
-          }
-          gmail {
-            email
-            site
-            type
-          }
-          instagram {
-            link
-            name
-            site
-          }
-          linkden {
-            link
-            site
-            type
+      }
+    }
+    allDataJson(filter: {type: {in: ["personal-info", "external-sites"]}}) {
+      edges {
+        node {
+          data {
+            personal_info {
+              identity {
+                name
+                pet_name
+                firstname
+                lastname
+              }
+              contact_details {
+                email
+                mobile
+                address
+                current_city
+                pincode
+              }
+            }
+            sites {
+              link
+              email
+              name
+              site
+              type
+              username
+              fab_icon
+              show
+              class_name
+            }
           }
         }
       }

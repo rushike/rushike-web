@@ -1,5 +1,5 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React, { useCallback, useState } from "react"
+import { graphql, useStaticQuery} from "gatsby"
 import { PageLayout, PageTitle, WorkHistory } from "../components"
 import { SEO, Utils } from "../utils"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -8,166 +8,109 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CardHeader, Grid, Card, 
   CardContent, Typography, Avatar, 
   IconButton, Paper, LinearProgress,
-  Box, Chip, CardMedia, CardActions
+  Box, Chip, CardMedia, CardActions,
+  Modal,
+  Dialog,
+  DialogTitle,
+  DialogContent
 } from "@material-ui/core"
+import CloseIcon from '@material-ui/icons/Close';
 import Rating from '@material-ui/lab/Rating';
-import Timeline from '@material-ui/lab/Timeline';
-import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
-import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
-import { TimelineOppositeContent } from "@material-ui/lab"
+import Photo, { PhotoRounded } from "../components/Photo"
+// import { ModalGateway, Modal } from "react-images"
+import { RightContentEducationItem, RightContentExperienceItem } from "../sections/ResumeRightContent"
+import { RatingBar } from "../components/Ratings"
+import { LeftSidebarContent, LeftSidebarSubContent } from "../sections/ResumeLeftSidebar"
+import { SkillChip, TagChip } from "../components/Chips"
+import Carousel from "react-images"
+import { useSwipeable } from "react-swipeable"
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-carousel-minimal';
 
-export function TagChip({data, label, size, iconImage}) {
-  return (
-    <Chip 
-      size="small" 
-      style = {{fontSize : `${.015 * size}rem`}}
-      icon 
-      avatar={
-        <Avatar alt={label || label.substring(0, 1)} src={iconImage}/>
-      } 
-      label={label} 
-      onClick={()=>null} />
-    )
-}
 
-function RatingBar({value}) {
-  return (
-    <Box component="fieldset" mb={3} borderColor="transparent">
-      <Rating name="customized-10" defaultValue={value} max={10} readOnly size="small"/>
-    </Box>
-  );
-}
 
-function RightContentEducationItem({title, iconImage, period, under, descriptionList, children}){
-  return (
-    <Card className="resume-right-content-education-institute-item">
-      <CardHeader
-        avatar={
-          <Avatar 
-            aria-label={title} 
-            className="{classes.avatar}" 
-            style = {{width : "3rem", height : "3rem"}}
-            src = {iconImage}
-          >
-          </Avatar>
-        }
-        action={
-          period
-        }
-        className = "resume-right-content-education-institute-header-text"
-        title={title}
-        subheader={under}
-      />
-      <CardContent
-        className = "resume-right-content-education-institute-text"
-      >
-        <ul>
-        {descriptionList.map(text=> (
-            <li key = {Math.random()} className ="text-left">
-                {text}
-            </li>
-          )
-        )}
-        </ul>
-      </CardContent>
-    </Card>
-  )
-}
-
-function RightContentExperienceItem({title, iconImage, period, descriptionList,children}){
-  return (
-    <Card className="resume-right-content-experience-company-item">
-      <CardHeader
-        avatar={
-          <Avatar 
-            aria-label={title} 
-            className="{classes.avatar}" 
-            style = {{width : "3rem", height : "3rem"}}
-            src = {iconImage}
-          >
-          </Avatar>
-        }
-        className = "resume-right-content-experience-company-header-text"
-        title={title}
-        subheader={period}
-      />
-      <CardContent
-        className = "resume-right-content-experience-company-text"
-      >
-        <ul>
-        {descriptionList.map(text=> (
-            <li key = {Math.random()} className ="text-left">
-                {text}
-            </li>
-          )
-        )}
-        </ul>
-      </CardContent>
-    </Card>
-  )
-}
-
-export function LeftSidebarContent({data, title, children}){
-  return (
-    <Grid item xs= "12" id = "resume-left-sidebar-content" 
-    >
-        <Typography 
-        variant="h6"
-        className = "resume-left-sidebar-content-head"
-        >
-            {title}
-        </Typography>
-        {children}
-        <hr></hr>
-    </Grid>
-  )
-}
-
-export function LeftSidebarSubContent({data, title, children}){
-  return (    
-    <Paper
-      className = "resume-left-sidebar-content"
-      square
-      >
-      <Typography variant="h6" component="h5" 
-        className = "resume-left-sidebar-content-subhead"
-      >
-        {title}
-      </Typography>
-        <Typography 
-                  className = "resume-left-sidebar-content-text" 
-                  variant="body2" 
-                  color="textSecondary" 
-                  component="p"
-                  >
-            {children}
-        </Typography>
-    </Paper>    
-    
-  )
+function getObjectFromData(data, name){
+  return data.allDataJson.edges.filter(v=>v.node.type === name)[0].node.data;
 }
 
 export default ({ data }) => {
 
   const history = data.allMarkdownRemark.edges || []
-  const images = data.allFile.edges || []
-  const imageMap = Utils.getImageMap(images, /\/[work].*\/|$/)
+  // const images = data.allFile.edges || []
+  const images = getObjectFromData(data, "my-photos").photos.filter(v=>!v.hidden).map(v=>({...v, images : v.src}));
+  const skills = getObjectFromData(data, "skills").skills;
+  console.log("skills  ; ", skills);
+  console.log("images  ; ", images);
+  // const imageMap = Utils.getImageMap(images, /\/[work].*\/|$/)
+  const [value, setValue] = React.useState(0);
+	const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);  
+  const swipeHandlers = useSwipeable({
+    onSwipedUp : (eventData) => {
+      console.log("swipe up");
+      setViewerIsOpen(false)
+    },
+    onSwipedDown : (eventData)=> {
+      console.log("swipe down");
+      setViewerIsOpen(false)
+    }
+  });
   
+  const closeLightbox = () => {
+    setCurrentImage(images.length - 1);
+    setViewerIsOpen(false);
+  };
+
+  const openLightbox = useCallback((event) => {
+    setCurrentImage(0);
+    setViewerIsOpen(true);
+  }, []);
+  // const openLightbox = ()=>{
+  //   console.log("photo clivked");
+  //   setCurrentImage(0);
+  //   setViewerIsOpen(true);
+  // }
+
   return (
     <PageLayout>
       <SEO title="Resume" />
+          
+            <Modal 
+              onClose={closeLightbox}
+              open={viewerIsOpen}
+              {...swipeHandlers}
+              >
+                
+              <div >
+                <Carousel
+                  currentIndex={currentImage}
+                
+                  views={images.map(x => ({
+                    ...x,
+                    srcset: x.srcSet,
+                    caption: x.title
+                  }))}
+                />
+                </div>
+            </Modal>
       <Grid container>
         <Grid item xs = "12" md = "4">
           {/* Left Siderbar */}
+
           <Grid container>
             <Grid item xs= "12" id = "name-heading">
               <CardHeader
                 avatar={
-                  <Avatar alt="rushikesh" src="../../images/my-photos/Profile.jpg" 
-                    className="resume-profile-photo" />
+                  <Avatar onClick={(e)=>openLightbox("profile2")} alt="rushikesh" src="../../images/my-photos/Profile2.jpg" 
+                    className = "resume-profile-photo"
+                  ></Avatar>
+                  // <Gallery photos={[{
+                  //     "src": "../../images/my-photos/Profile2.jpg",
+                  //     "width": 70,
+                  //     "height": 70,
+                  //     "type" : "formal"
+                  // }]} onClick={openLightbox} renderImage = {PhotoRounded} />
                   // <Avatar aria-label="recipe" className={classes.avatar}>
                   //   R
                   // </Avatar>
@@ -201,20 +144,20 @@ export default ({ data }) => {
               >
                 Plot 18, Shivnagar, Near Shivniketan Tower, Pipeline Rd. Savedi Ahmednagar
               </LeftSidebarSubContent>
-              <LeftSidebarSubContent
+              {/* <LeftSidebarSubContent
                 title = "Contact"
               >
                 7745023872
-              </LeftSidebarSubContent>
+              </LeftSidebarSubContent> */}
               <LeftSidebarSubContent
                 title = "Email"
               >
-                rushike.ab1@gmail.com
+                rushikeslr@gmail.com
               </LeftSidebarSubContent>
               <LeftSidebarSubContent
                 title = "Linkden"
               >
-                linkedin.com/rushike
+                linkedin.com/in/rushike
               </LeftSidebarSubContent>
             </LeftSidebarContent>
             <LeftSidebarContent
@@ -261,7 +204,7 @@ export default ({ data }) => {
                 <TagChip
                   label = "NodeJs"
                   size = {70}
-                  iconImage = "data:image/png;base64,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"
+                  iconImage = "../../images/logos/nodejs.jpg"
                 >
                 </TagChip>
                 <TagChip
@@ -318,7 +261,7 @@ export default ({ data }) => {
         >
           {/* Right Sidebar */}
           <Grid container>
-            <Grid item xs = "12">
+            <Grid item xs = "12" className = "resume-right-content-self-description">
               I am computer engineer, passed out in 2020 from Sardar Patel Institute
               of Technology, Mumbai. Since 2020 I am currently working with Deutsche Bank
               as software developer
@@ -340,8 +283,8 @@ export default ({ data }) => {
                   category = "internship"
                   time = "full-time"
                   descriptionList = {[
-                    "Joined in Aug, 2020 as graduate and worked over devOps and development environment",
-                    "Writen teamcity build job for automating manual process on devboxes",
+                    <p>Joined in Aug, 2020 as grad, worked on 2 projects which includes DevOps Automation, and Spring API</p>,
+                    <p>Automated manual build jobs / deploy steps with <SkillChip name = "teamcity" skills = {skills}/></p>,
                     "Worked over Spring API capable to streaming messages",
                     "Worked with apache freemarker to transform the messages in between"
                   ]}
@@ -472,6 +415,30 @@ export const query = graphql`
             }
           }
           relativePath
+        }
+      }
+    }
+    allDataJson(filter: {type: {in: ["skills", "my-photos"]}}) {
+      edges {
+        node {
+          type
+          data {
+            photos {
+              src
+              width
+              height
+              type
+              hidden
+            }
+            skills {
+              technical {
+                type
+                name
+                skill
+                img_url
+              }
+            }
+          }
         }
       }
     }

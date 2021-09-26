@@ -1,0 +1,32 @@
+{
+    "type" : "experience",
+    "data" : {
+        "experience" : {
+            "outside" : [
+                {
+                    "name" : "Deutsche Bank",
+                    "img-url" : "../../images/logos/deutshe-bank.png",
+                    "company-desc" : "",
+                    "job-role" : "Software Developer",
+                    "period" : "Aug, 2020 - Present",
+                    "description-list" : [
+
+                    ]
+                },
+                {
+                    "name" : "Algonauts Technoglogies",
+                    "img-url" :"../../images/logos/algonauts.png",
+                    "company-desc" : "",
+                    "job-role" : "Web Developer",
+                    "period" : "Jan, 2020 - July 2020",
+                    "description-list" : [
+
+                    ]
+                }
+            ], 
+            "personal" : [
+
+            ]
+        }
+    }
+}

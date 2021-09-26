@@ -8,6 +8,7 @@
 $themes: (
   light: (
     backgroundColor: white,
+    transperentWhiteColor : transperent,
     footerBackground: white,
     navBackground: $gray-100,
     secondary: $gray-900,
@@ -27,10 +28,12 @@ $themes: (
     file: $dark-blue,
     iconBackground: $white,
     cardBackground: $white,
+    instagram : red,
   ),
   dark: (
     backgroundColor: #222,
     footerBackground: #222,
+    transperentWhiteColor : white,
     secondary: $gray-100,
     navBackground: $dark-gray,
     linkHover: $gray-200,
@@ -49,6 +52,7 @@ $themes: (
     file: $empire-red,
     iconBackground: $black,
     cardBackground: $dark-gray,
+    instagram : red,
   ),
 );
 
@@ -174,6 +178,9 @@ $themes: (
     &.mail {
       color: themed("mail");
     }
+    &.instagram {
+      color: themed("instagram");
+    }
     &.file {
       color: themed("file");
     }
@@ -227,6 +234,7 @@ img {
   background: aliceblue;
   text-align: left;
   padding: 0 2rem;
+  border-radius: 1rem;
 }
 .resume-left-sidebar-content-subhead{
   @include themify($themes) {
@@ -247,6 +255,11 @@ img {
   padding: 0 1rem;
 }
 
+.resume-skill-chip{
+  @include themify($themes) {
+    background-color: themed("transperentWhiteColor") !important;
+  }
+}
 
 .resume-right-sidebar-content-body{
   align-items: baseline;
@@ -265,19 +278,30 @@ img {
   }
 }
 .resume-right-content-head{
-  background: aliceblue;
+  color: black;
+  background: aliceblue !important;
   text-align: left;
   padding: 0 2rem;
-  @include themify($themes) {
-    color: themed("secondary");
-  }
+  border-radius: 1rem;
 }
 
+.resume-right-content-self-description {
+  @include themify($themes) {
+    color:  themed("secondary");
+  }
+}
 .resume-right-content-experience-item{
   width: 100%;
 }
 
 .resume-right-content-experience-company-header-text{
+  @include themify($themes) {
+    color: themed("secondary");
+  }
+  text-align: left;
+}
+
+.resume-right-content-subheader-text{
   @include themify($themes) {
     color: themed("secondary");
   }
@@ -321,5 +345,21 @@ img {
 
 .react-photo-gallery--gallery > div > img {
   align-self: flex-start;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .index-page-head-name {
+    font-size: 2rem;
+    color: black;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .index-page-head-name {
+    font-size: 5rem;
+    color: black;
+  }
 }
 

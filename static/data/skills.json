@@ -1,0 +1,78 @@
+{
+    "type" : "skills",
+    "data" : {
+        "skills" : {
+            "technical" : [
+                {
+                    "name" : "java",
+                    "img-url" : "../../images/logos/java.png",
+                    "skill" : 0.7,
+                    "type" : "language"
+                },
+                {
+                    "name" : "python",
+                    "img-url" : "../../images/logos/python.jpg",
+                    "skill" : 0.9,
+                    "type" : "language"
+                },
+                {
+                    "name" : "javascript",
+                    "img-url" : "../../images/logos/javascript.png",
+                    "skill" : 1,
+                    "type" : "language"
+                },
+                {
+                    "name" : "sql",
+                    "img-url" : "../../images/logos/sql.jpg",
+                    "skill" : 0.6,
+                    "type" : "language"
+                },
+                {
+                    "name" : "react",
+                    "img-url" : "../../images/logos/react.png",
+                    "skill" : 0.9,
+                    "type" : "framework"
+                },
+                {
+                    "name" : "django",
+                    "img-url" : "../../images/logos/django.jpg",
+                    "skill" : 0.7,
+                    "type" : "framework"
+                },
+                {
+                    "name" : "nodejs",
+                    "img-url" : "../../images/logos/nodejs.jpg",
+                    "skill" : 0.5,
+                    "type" : "framework"
+                },
+                {
+                    "name" : "springboot",
+                    "img-url" : "../../images/logos/springboot.jfif",
+                    "skill" : 1,
+                    "type" : "framework"
+                },
+                {
+                    "name" : "jira",
+                    "img-url" : "../../images/logos/jira.jpg",
+                    "skill" : 0.5,
+                    "type": "software"
+                },
+                {
+                    "name" : "teamcity",
+                    "img-url" : "../../images/logos/teamcity.png",
+                    "skill" : 0.5,
+                    "type": "software"
+                },
+                {
+                    "name" : "git",
+                    "img-url" : "../../images/logos/git.png",
+                    "skill" : 0.7,
+                    "type": "software"
+                }
+            ],
+            "non-technical" : [
+
+            ]
+        }
+    }
+}

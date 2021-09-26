@@ -1,0 +1,33 @@
+{
+    "type" : "education",
+    "data" : {
+        "education" : {
+            "institute" : [
+                {
+                    "name" : "Sardar Patel Institue of Technology",
+                    "img-url" : "../../images/logos/spit.jfif",
+                    "under" : "University of Mumbai",
+                    "ed-title" : "BE, Computer Engineering",
+                    "period" : "2016 - 2020",
+                    "cgpa" : "8.01"
+                },
+                {
+                    "name" : "Residential Jr. College, Ahmednagar",
+                    "img-url" : "../../images/logos/residential-jr-college.jfif",
+                    "under" : "Savitribai Phule Pune University",
+                    "ed-title" : "HSC",
+                    "period" : "2014 - 2016",
+                    "percentage" : "84.31"
+                },
+                {
+                    "name" : "Oxford English Medium School, Nanded",
+                    "img-url" : "../../images/logos/oems.jpg",
+                    "under" : "Maharashtra State Board, Latur Division",
+                    "ed-title" : "SSC",
+                    "period" : "2014",
+                    "percentage" : "95.40"
+                }
+            ]
+        }
+    }
+}

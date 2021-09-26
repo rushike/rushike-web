@@ -105,3 +105,43 @@ body {
 .unemployed {
   font-size: 1.35rem;
 }
+
+
+.view-100vh{
+  height: 100vh !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.content-head {
+  background: aliceblue;
+  text-align: left;
+  padding: 0 2rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.mx-center{
+  margin: 0 auto !important;
+}
+
+.large-img {
+  height: 20rem !important;
+  width: 20rem !important;
+}
+
+.medium-img {
+  height: 10rem !important;
+  width: 10rem !important;
+}

@@ -3,6 +3,18 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+// var admin = require("firebase-admin");
+// require("dotenv").config()
+
+// var serviceAccount = require("D:\\rushike\\secrets\\rushike-site-firebase-adminsdk-a3czq-a38bbb69e6.json");
+// console.log("creds : ", admin.credential.cert(serviceAccount));
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   /* Your site config here */

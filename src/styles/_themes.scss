@@ -29,6 +29,9 @@ $themes: (
     iconBackground: $white,
     cardBackground: $white,
     instagram : red,
+    whatsapp : #128C7E,
+    linkden : #0e76a8,
+    facebook:#3b5998
   ),
   dark: (
     backgroundColor: #222,
@@ -53,6 +56,9 @@ $themes: (
     iconBackground: $black,
     cardBackground: $dark-gray,
     instagram : red,
+    whatsapp : #128C7E,
+    linkden : #0e76a8,
+    facebook:#3b5998
   ),
 );
 
@@ -159,7 +165,23 @@ $themes: (
     background: themed("navBackground");
   }
 }
-
+.icons {
+  @include themify($themes) {
+    background: themed("iconBackground");
+    &.instagram {
+      color: themed("instagram");
+    }
+    &.whatsapp {
+      color: themed("whatsapp");
+    }
+    &.linkden {
+      color: themed("linkden");
+    }
+    &.facebook {
+      color: themed("facebook");
+    }
+  }
+}
 .icons:hover {
   @include themify($themes) {
     background: themed("iconBackground");
@@ -180,6 +202,15 @@ $themes: (
     }
     &.instagram {
       color: themed("instagram");
+    }
+    &.whatsapp {
+      color: themed("whatsapp");
+    }
+    &.linkden {
+      color: themed("linkden");
+    }
+    &.facebook {
+      color: themed("facebook");
     }
     &.file {
       color: themed("file");

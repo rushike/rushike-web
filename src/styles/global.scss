@@ -124,11 +124,20 @@ body {
 }
 
 .content-head {
-  background: aliceblue;
+  background: aliceblue !important;
   text-align: left;
   padding: 0 2rem;
   border-radius: 1rem;
   font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 3.25rem !important;
+}
+
+.content-subhead {
+  text-align: left;
+  padding: 0 2rem;
+  border-radius: 1rem;
+  font-size: 1.1rem;
   font-weight: 800;
 }
 
@@ -145,3 +154,19 @@ body {
   height: 10rem !important;
   width: 10rem !important;
 }
+
+.fw-bold {
+  font-weight:600;
+}
+
+.fw-bold-more {
+  font-weight: 900;
+}
+
+
+// @media only screen and (max-width: 940px) {
+  .mobile-left-stack{
+    text-align: left !important;
+  }
+// }
+

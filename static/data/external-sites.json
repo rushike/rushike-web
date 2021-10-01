@@ -5,6 +5,8 @@
             {
               "site" : "github.com",
               "username" :  "rushike",
+              "name" : "github",
+              "label" : "rushike",
               "link": "https://github.com/rushike",
               "type" : "coding",
               "fab-icon" : "github",
@@ -13,6 +15,7 @@
             {
               "site" : "",
               "name" : "freecodecamp",
+              "label" : "rushike",
               "username" :  "rushike",
               "link": "https://github.com/rushike",
               "type" : "coding",
@@ -22,6 +25,7 @@
             {
               "site" : "",
               "name" : "hackerrank",
+              "label" : "rushike",
               "username" :  "rushike",
               "link": "https://github.com/rushike",
               "type" : "coding",
@@ -30,14 +34,17 @@
             },
             {
               "name" : "linkden",
+              "label" : "rushike",
               "site" : "https://linkedin.com/",
               "link": "https://www.linkedin.com/in/rushike/",
               "type" : "social",
               "fab-icon" : "linkedin",
+              "class-name" : "linkedin",
               "show" : true
             },
             {
               "name" : "gmail",
+              "label" : "rushike",
               "site" : "gmail.com",
               "email" : "mailto:rushike.ab1@gmail.com",
               "link" : "mailto:rushike.ab1@gmail.com",
@@ -49,11 +56,34 @@
             
             {
               "name" : "instagram",
+              "label" : "rushikeshrushi",
               "site" : "https://www.instagram.com/",
               "username" : "rushikeshrushi",
               "link": "https://www.instagram.com/rushirushikesh/",
               "type" : "social",
               "fab-icon" : "instagram",
+              "class-name" : "instagram",
+              "show" : true
+            },
+            {
+              "name" : "facebook",
+              "label" : "10incars",
+              "site" : "https://www.instagram.com/",
+              "username" : "rushikeshrushi",
+              "link": "https://www.facebook.com/10incarcs",
+              "type" : "social",
+              "fab-icon" : "facebook",
+              "class-name" : "facebook",
+              "show" : true
+            },
+            {
+              "name" : "whatsapp",
+              "label" : "9309490571",
+              "site" : "https://www.instagram.com/",
+              "link": "https://wa.me/+919309490571",
+              "type" : "social",
+              "fab-icon" : "whatsapp",
+              "class-name" : "whatsapp",
               "show" : true
             }
           ]

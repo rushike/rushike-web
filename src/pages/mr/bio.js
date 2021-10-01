@@ -17,6 +17,9 @@ import { getIconPath } from "../../utils/image-repo";
 import { PageLayout } from "../../components"
 import { SEO } from "../../utils"
 import { RightContentEducationItem, RightContentExperienceItem } from "../../sections/ResumeRightContent"
+
+import "../../styles/global.scss"
+import bioPdf from "../../../static/pdfs/bio.pdf"
 // import "firebase/auth"
 // import "firebase/firestore"
 // import "firebase/functions"
@@ -37,7 +40,10 @@ import { RightContentEducationItem, RightContentExperienceItem } from "../../sec
 // const app = initializeApp({
 //   });
 function getObjectFromData(data, name){
-	return data.allDataJson.edges.filter(v=>v.node.type === name)[0].node.data;
+    console.log("data: ", data.allDataJson.edges);
+	var a = data.allDataJson.edges.filter(v=>v.node.type === name)[0];
+    console.log("a : ", a.node.data, name);
+    return a.node.data
 }
 
 
@@ -52,7 +58,7 @@ export default ({data})=>{
 
 	const includeSite = ["facebook", "whatsapp", "instagram", "linkden"]
 	const sites = getObjectFromData(data, "external-sites").sites.filter(v=>includeSite.includes(v.name));
-
+    console.log("sites array :" , sites);
 	// States Vars
 	const [currentImage, setCurrentImage] = useState(0);
 	const [morePersonalDetails, setMorePersonalDetails] = useState(false);
@@ -124,7 +130,16 @@ export default ({data})=>{
 				</div>
 			</Modal>
 		{/* <PageTitle title="Bio Marathi" /> */}
-		<Grid container>
+		<Grid container sx={{ flexGrow: 1 }} className = "container px-4" style = {{padding : "0 1000"}} >
+					<div style = {{position : "absolute"}}>
+						<a href = {bioPdf} download> 
+							<Avatar 
+								alt="rushikesh" src={getIconPath("download.png") 
+								} 
+											
+							>Download Bio</Avatar>
+						</a>
+					</div>
 					<Grid item xs = {12}>
 						<Grid container className = "text-center" spacing = {3}>
 							{/* Photo */}
@@ -136,12 +151,12 @@ export default ({data})=>{
 							
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "fw-bold content-head border">
+							<Grid item xs = {12} className = "text-center fw-bold content-head border">
 								<span>
-									Personal Details
+										वैयक्तिक  माहिती
 								</span>
 							</Grid>
-							<Grid item xs = {4} md = {6} className = "text-right px-2 border">
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 								<span>नाव</span>
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
@@ -150,10 +165,10 @@ export default ({data})=>{
 									<span>बांगर​</span>
 							</Grid>
 							
-							<Grid item xs = {4} md = {6} className = "text-right px-2 border">
-								<span>जन्म तारिख​ </span>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>जन्म दिनांक</span>
 							</Grid>
-							<Grid item xs = {8} md = {6} className = "text-left px-2 border">
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border ">
 									<span>
 										<Chip
 											avatar={
@@ -167,11 +182,100 @@ export default ({data})=>{
 									</span>
 									
 							</Grid>
-							<Grid item xs = {4} md = {6} className = "text-right px-2 border">
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 								<span>मोबाईल नंबर​</span>
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border">
 								<span><a href = "tel:+919309490571"> 9309490571 </a></span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+									<span>जन्म वेळ </span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+									<span>
+											<Chip
+													avatar={
+															<Avatar 
+																	alt="🕑"
+																	src= {getIconPath("clock.png")}
+															/>
+													}
+													label="१२:१५ दुपारी"
+													variant="outlined"
+											/>
+											</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+									<span>जन्म स्थल​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									<Chip
+											avatar={
+													<Avatar 
+															alt="B"
+															src= {getIconPath("beed.jfif")}
+													/>
+											}
+											label="बीड"
+											variant="outlined"
+									/>
+										
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+									<span>शिक्षण​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+									<span>
+										<Chip
+											avatar={
+												<Avatar 
+														alt="B"
+														src= {getIconPath("cs-logo.png")}
+												/>
+											}
+											label="कॉम्पुटर इंजिनीरिंग B.E."
+											variant="outlined"
+										/>
+											
+									</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+									<span>उंची​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									<Chip
+											avatar={
+													<Avatar 
+															alt="B"
+															src= {getIconPath("height.png")}
+													/>
+											}
+											label={"५'७\""}
+											variant="outlined"
+									/>
+										
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+									<span>वजन</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									<Chip
+											avatar={
+													<Avatar 
+															alt="B"
+															src= {getIconPath("weight.png")}
+													/>
+											}
+											label={"७० किलो"}
+											variant="outlined"
+									/>
+										
+								</span>
 							</Grid>
 							<Grid item xs = {12} md = {12} className = "text-left px-2 border">
 								{/* <span className = "content-subhead">कॉन्टॅक्ट</span> */}
@@ -180,6 +284,7 @@ export default ({data})=>{
 									<Grid container className = "px-2">
 											{
 												sites.map(v=>{
+													console.log("witing chip v : ", v);
 													return (
 														<Grid item xs = {6} md = {3} className = "text-center">
 															<a
@@ -189,11 +294,18 @@ export default ({data})=>{
 																key = {`${Math.random()}`}
 																className = "px-auto"
 															>
-																<FontAwesomeIcon
-																	icon={["fab", v.fab_icon]}
-																	className={`icons ${v.class_name || v.fab_icon}`}
-																	title={v.name}
+																	<Chip
+																		avatar={
+																				<FontAwesomeIcon
+																						icon={["fab", v.fab_icon]}
+																						className={`icons ${v.class_name || v.fab_icon}`}
+																						title={v.name}
+																				/>
+																		}
+																		label={v.label}
+																		variant="outlined"
 																/>
+																
 															</a>
 														</Grid>
 													)
@@ -203,7 +315,7 @@ export default ({data})=>{
 									</Grid>
 								</div>
 							</Grid>
-							<Grid item xs = {12}>
+							{/* <Grid item xs = {12}>
 								<Accordion expanded={morePersonalDetails === 'PANEL-1'} onChange={handleMorePersonalDetail('PANEL-1')}>
 									<AccordionSummary
 									expandIcon={<ExpandMoreIcon />}
@@ -254,12 +366,12 @@ export default ({data})=>{
 										</Grid>
 									</AccordionDetails>
 								</Accordion>
-							</Grid>
+							</Grid> */}
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "fw-bold content-head border">
+							<Grid item xs = {12} className = "text-center fw-bold content-head border">
 								{/* शिक्षण */}
-								Education
+								शिक्षण
 							</Grid>
 							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border ">
 								<span>इंजीनियरिंग​</span>
@@ -315,9 +427,11 @@ export default ({data})=>{
 						</Grid>
 
 						<Grid>
-							<Grid item xs = {12} className = "fw-bold content-head border">
-								{/* काम  */}
-								Work
+							<Grid item xs = {12} className = "text-center fw-bold content-head border" 
+								// style = {{marginTop : "10rem"}}
+							>
+								{/* नोकरी  */}
+								नोकरी
 							</Grid>
 							<Grid item xs = {12} className = "text-center px-2 border ">
 								<RightContentExperienceItem
@@ -351,9 +465,9 @@ export default ({data})=>{
 							</Grid>
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "fw-bold content-head border">
-								{/* Hobbies */}
-								Hobbies
+							<Grid item xs = {12} className = "text-center fw-bold content-head border">
+								{/* छंद */}
+								छंद
 							</Grid>
 							<Grid item xs = {12} className = "fw-bold border">
 								<Chip
@@ -408,6 +522,61 @@ export default ({data})=>{
 							</Grid>
 							</Grid>
 						</Grid>
+						<Grid container>
+							<Grid item xs = {12} className = "text-center fw-bold content-head border">
+								{/* छंद */}
+								कौटुंबिक माहिती
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>वडिलांचे नाव ​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									अर्जुन मारोती बांगर 
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>आईचे नाव ​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									मीरा अर्जुन बांगर 
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>सध्याचा  पत्ता​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									प्लॉट न. १८, शिवनगर, शिवनिकेतन टॉवर जवळ, पाईपलाईन रोड, सावेडी, अहमदनगर 
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>गाव​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									वाघीरा 
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>तालूका </span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									पाटोदा 
+								</span>
+							</Grid>
+							
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>जिल्हा</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									बीड 
+								</span>
+							</Grid>
+						</Grid>
 					</Grid>
 			</PageLayout>
 	)
@@ -415,7 +584,7 @@ export default ({data})=>{
 
 export const query = graphql`
 	query {
-		allDataJson(filter: {type: {in: ["skills", "my-photos", "external-sites"]}}) {
+		allDataJson{
 			edges {
 				node {
 					type
@@ -430,6 +599,7 @@ export const query = graphql`
 							fab_icon
 							show
 							class_name
+							label
 						}
 						photos {
 							src

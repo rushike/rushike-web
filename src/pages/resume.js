@@ -15,6 +15,7 @@ import { CardHeader, Grid, Card,
   DialogContent
 } from "@material-ui/core"
 import CloseIcon from '@material-ui/icons/Close';
+import CodeIcon from '@material-ui/icons/Code';
 import Rating from '@material-ui/lab/Rating';
 import Photo, { PhotoRounded } from "../components/Photo"
 // import { ModalGateway, Modal } from "react-images"
@@ -24,6 +25,8 @@ import { LeftSidebarContent, LeftSidebarSubContent } from "../sections/ResumeLef
 import { SkillChip, TagChip } from "../components/Chips"
 import Carousel from "react-images"
 import { useSwipeable } from "react-swipeable"
+import { getIconPath } from "../utils/image-repo";
+
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from 'react-responsive-carousel';
 // import { Carousel } from 'react-carousel-minimal';
@@ -144,20 +147,21 @@ export default ({ data }) => {
               >
                 Plot 18, Shivnagar, Near Shivniketan Tower, Pipeline Rd. Savedi Ahmednagar
               </LeftSidebarSubContent>
-              {/* <LeftSidebarSubContent
+              <LeftSidebarSubContent
                 title = "Contact"
               >
-                7745023872
-              </LeftSidebarSubContent> */}
+                <span><a href = "tel:+919309490571" style = {{textDecoration:"none", color : "black"}}> 9309490571 </a></span>
+              </LeftSidebarSubContent>
               <LeftSidebarSubContent
                 title = "Email"
               >
-                rushikeslr@gmail.com
+                <span><a href = "mailto:rushikeslr@gmail.com" style = {{textDecoration:"none", color : "black"}}> rushikeslr@gmail.com </a></span>
               </LeftSidebarSubContent>
               <LeftSidebarSubContent
                 title = "Linkden"
               >
-                linkedin.com/in/rushike
+                <span><a href = "https://linkedin.com/in/rushike" style = {{textDecoration:"none", color : "black"}}> linkedin.com/in/rushike </a></span>
+                
               </LeftSidebarSubContent>
             </LeftSidebarContent>
             <LeftSidebarContent
@@ -347,31 +351,71 @@ export default ({ data }) => {
                   ]}
                 ></RightContentEducationItem>
             </Grid>
-          </Grid>
+        <Grid container>
+							<Grid item xs = {12} className = "">
+								{/* Hobbies */}
+								<Typography 
+                  variant="h6"
+                  className = "resume-right-content-head"
+                >
+                    Experience
+                </Typography>
+							</Grid>
+							<Grid item xs = {12} className = "fw-bold border">
+								<Chip
+									avatar={
+										<Avatar alt="<>">
+											<CodeIcon></CodeIcon>
+										</Avatar>
+									}
+									label="Coding"
+									variant="outlined"
+								/>
+								<Chip
+									avatar={
+										<Avatar
+											alt = "♘"
+											src = {getIconPath("board-games.jpg")}
+										/>
+									}
+									label="Board Games"
+									variant="outlined"
+								/>
+								<Chip
+									avatar={
+										<Avatar
+											alt = "🎹"
+											src = {getIconPath("piano.png")}
+										/>
+									}
+									label="Playing Paino"
+									variant="outlined"
+								/>
+								<Chip
+									avatar={
+										<Avatar
+											alt = "🎸"
+											src = {getIconPath("guitar.png")}
+										/>
+									}
+									label="Playing Guitar"
+									variant="outlined"
+								/>
+								<Chip
+									avatar={
+										<Avatar
+											alt = "“∫”"
+											src = {getIconPath("mathematics.png")}
+										/>
+									}
+									label="Mathematics"
+									variant="outlined"
+								/>
+							</Grid>
+							</Grid>
+						</Grid>
         </Grid>
-      </Grid>
-      {/* <PageTitle title="Resume">
-        &nbsp;
-        <a href="../../resume.pdf" target="_blank" download>
-          <FontAwesomeIcon
-            style={{ fontSize: "2rem" }}
-            icon={["fas", "file-download"]}
-            className="icons file"
-          />
-        </a>
-      </PageTitle>
-      <Container className="mt-5 pt-3" fluid>
-        {history.map(({ node }) => (
-          <div key={node.id}>
-            <WorkHistory
-              frontmatter={node.frontmatter}
-              image={imageMap[node.fields.slug]}
-              html={node.html}
-            />
-            <hr className="w-75" />
-          </div>
-        ))}
-      </Container> */}
+        </Grid>
     </PageLayout>
   )
 }

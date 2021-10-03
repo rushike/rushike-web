@@ -1,12 +1,19 @@
-import React, { useContext} from "react"
+import React, { useContext, useState} from "react"
 import ThemeContext from "../utils/theme"
 import { Navbar, Nav, Form } from "react-bootstrap"
 import { Link } from "gatsby"
 import "./Fontawesome.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Firebase } from "../firebase/Firebase"
 
 export default () => {
   const { dark, toggleDark, toString } = useContext(ThemeContext)
+  const [user, setUser] = useState(Firebase.currentUser);
+  function handleLogInLogOutClick(){
+    Firebase.logInOrLogOut().then(user => {
+      setUser(user);
+    });  
+  }
   return (
     <Navbar variant={toString()} fixed="top" collapseOnSelect expand="md">
       <Navbar.Brand className="pl-5 ml-5" as={Link} to="/">
@@ -34,6 +41,9 @@ export default () => {
           </Nav.Link>
           <Nav.Link className="ml-2" as={Link} to="/gallery" title="Blog">
             Gallery
+          </Nav.Link>
+          <Nav.Link className="ml-2" as={Link} to="/" onClick = {handleLogInLogOutClick} title="Blog">
+            {user ? "Log Out" : "Log In"}
           </Nav.Link>
           {/* <Nav.Link className="ml-2" as={Link} to="/blog" title="Blog">
             Inspiration Quotes

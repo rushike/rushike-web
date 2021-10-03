@@ -66,13 +66,7 @@
                 "type" : "self",
                 "hidden" : false
             },
-            {
-                "src": "../../images/my-photos/daana-paani-beach-cleanup.jpg",
-                "width": 1,
-                "height": 1,
-                "type" : "self",
-                "hidden" : true
-            },
+
             {
                 "src": "../../images/my-photos/morning-local-harbour-line.jpg",
                 "width": 1,
@@ -93,7 +87,50 @@
                 "height": 1,
                 "type" : "self",
                 "hidden" : false
+            },
+            {
+                "src": "../../images/my-photos/residential-college-rushikesh-bangar-electronic-class.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "self",
+                "hidden" : true
+            },
+            {
+                "src": "../../images/my-photos/rushikesh-bangar-old-selfie.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "self",
+                "hidden" : true
+            },
+            {
+                "src": "../../images/my-photos/prakash-and-rushikesh-bangar-old-2014-photo.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "with-friends",
+                "hidden" : true
+            },
+            {
+                "src": "../../images/my-photos/prakash-rushikesh-bangar-abhishek.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "with-friends",
+                "hidden" : true
+            },
+            {
+                "src": "../../images/my-photos/tie-day-rushikesh-bangar-and-nayan.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "with-friends",
+                "hidden" : true
+            },
+            {
+                "src": "../../images/my-photos/traditionalday-rushikesh-bangar-rohit-omkar.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "with-friends",
+                "hidden" : true
             }
+
         ]
     }
 }

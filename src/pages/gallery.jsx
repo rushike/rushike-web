@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useState } from "react"
+import React, { useContext, useCallback, useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import ThemeContext from "../utils/theme"
 import { PageLayout, PageTitle } from "../components"
@@ -9,6 +9,8 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import Photo from "../components/Photo";
 import {Tab, Tabs, Box, Typography} from "@material-ui/core"
 import PropTypes from 'prop-types';
+import { PrivateComponent } from "../components/PrivateComponent"
+import { Firebase } from "../firebase/Firebase"
 
 
 export function TabPanel(props) {
@@ -41,6 +43,7 @@ export default ({data})=>{
   const [value, setValue] = React.useState(0);
 	const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);  
+  
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
@@ -57,7 +60,8 @@ export default ({data})=>{
   const photos = data.allDataJson.edges[0].node.data.photos
   const formal = photos.filter(v=>v.type === 'formal')
   const with_friends = photos.filter(v=>v.type === 'with-friends')
-  const self = photos.filter(v=>v.type === 'self2')
+  const self = photos.filter(v=>v.type === 'self')
+  const currentArray = [formal, with_friends, self]
   
   return (
 		<PageLayout>
@@ -79,12 +83,16 @@ export default ({data})=>{
           <Gallery photos={formal} onClick={openLightbox} renderImage = {Photo} />
         </TabPanel>
         
-        <TabPanel value = {value} index = {0}>
-          <Gallery photos={with_friends} onClick={openLightbox} renderImage = {Photo} />
+        <TabPanel value = {value} index = {1}>
+          <PrivateComponent access_type = "friend">
+            <Gallery photos={with_friends} onClick={openLightbox} renderImage = {Photo} />
+          </PrivateComponent>
         </TabPanel>
 
-        <TabPanel value = {value} index = {0}>
-          <Gallery photos={self} onClick={openLightbox} renderImage = {Photo} />
+        <TabPanel value = {value} index = {2}>
+          <PrivateComponent access_type = "friend">
+            <Gallery photos={self} onClick={openLightbox} renderImage = {Photo} />
+          </PrivateComponent>
         </TabPanel>
           
         
@@ -93,7 +101,7 @@ export default ({data})=>{
             <Modal onClose={closeLightbox}>
               <Carousel
                 currentIndex={currentImage}
-                views={formal.map(x => ({
+                views={currentArray[value].map(x => ({
                   ...x,
                   srcset: x.srcSet,
                   caption: x.title

@@ -151,7 +151,7 @@ export default ({data})=>{
 							
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "text-center fw-bold content-head border">
+							<Grid item xs = {12} className = "text-center fw-bold-more content-head border">
 								<span>
 										वैयक्तिक  माहिती
 								</span>
@@ -181,12 +181,6 @@ export default ({data})=>{
 										/>
 									</span>
 									
-							</Grid>
-							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
-								<span>मोबाईल नंबर​</span>
-							</Grid>
-							<Grid item xs = {8} md = {6} className = "text-left px-2 border">
-								<span><a href = "tel:+919309490571"> 9309490571 </a></span>
 							</Grid>
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 									<span>जन्म वेळ </span>
@@ -276,6 +270,12 @@ export default ({data})=>{
 									/>
 										
 								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>मोबाईल नंबर​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border">
+								<span><a href = "tel:+919309490571"> 9309490571 </a></span>
 							</Grid>
 							<Grid item xs = {12} md = {12} className = "text-left px-2 border">
 								{/* <span className = "content-subhead">कॉन्टॅक्ट</span> */}
@@ -369,11 +369,11 @@ export default ({data})=>{
 							</Grid> */}
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "text-center fw-bold content-head border">
+							<Grid item xs = {12} className = "text-center fw-bold-more content-head border">
 								{/* शिक्षण */}
 								शिक्षण
 							</Grid>
-							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border ">
+							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border fw-bold-more">
 								<span>इंजीनियरिंग​</span>
 							</Grid>
 							<Grid item xs = {12} md = {6} className = "text-left px-2 border">
@@ -390,7 +390,7 @@ export default ({data})=>{
 									>
 								</RightContentEducationItem>
 							</Grid>
-							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border ">
+							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border fw-bold-more ">
 								<span>HSC​ / एच. यस. सी</span>
 							</Grid>
 							<Grid item xs = {12} md = {6} className = "text-left px-2 border">
@@ -407,7 +407,7 @@ export default ({data})=>{
 									>
 								</RightContentEducationItem>
 							</Grid>
-							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border ">
+							<Grid item xs = {12} md = {6} className = "text-right mobile-left-stack px-2 border fw-bold-more">
 								<span>SSC​ / यस. यस. सी</span>
 							</Grid>
 							<Grid item xs = {12} md = {6} className = "text-left px-2 border">
@@ -427,7 +427,7 @@ export default ({data})=>{
 						</Grid>
 
 						<Grid>
-							<Grid item xs = {12} className = "text-center fw-bold content-head border" 
+							<Grid item xs = {12} className = "text-center fw-bold-more content-head border" 
 								// style = {{marginTop : "10rem"}}
 							>
 								{/* नोकरी  */}
@@ -442,13 +442,14 @@ export default ({data})=>{
 									category = "internship"
 									time = "full-time"
 									descriptionList = {[
-															"Full Time job based in Magarpatta, Pune",
-															"Currently Working From Home"
+										"Job Role : Software Developer",
+										"Location : Magarpatta Pune, (Currently Work From Home)",
+										"Tech Stack : Java, Scala, DevOps, Python"
 									]}
 									>
 									</RightContentExperienceItem>
 								</Grid>
-								<Grid item xs = {12}>
+								<Grid item xs = {12}  className = "text-center px-2 border ">
 									<RightContentExperienceItem
 									className = "resume-right-content-experience-company-item"
 									title = "Algonauts Technologies"
@@ -457,15 +458,16 @@ export default ({data})=>{
 									category = "internship"
 									time = "full-time"
 									descriptionList = {[
-										"Full Time intership persuied in final year of BE",
-															"Worked on web development with Django"
+										"Job Role : Web / Software Developer",
+										"Location : Andheri, Mumbai",
+										"Tech Stack : Python, Django, Azure"
 									]}
 									>
 									</RightContentExperienceItem>
 							</Grid>
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "text-center fw-bold content-head border">
+							<Grid item xs = {12} className = "text-center fw-bold-more content-head border">
 								{/* छंद */}
 								छंद
 							</Grid>
@@ -523,7 +525,7 @@ export default ({data})=>{
 							</Grid>
 						</Grid>
 						<Grid container>
-							<Grid item xs = {12} className = "text-center fw-bold content-head border">
+							<Grid item xs = {12} className = "text-center fw-bold-more content-head border">
 								{/* छंद */}
 								कौटुंबिक माहिती
 							</Grid>
@@ -533,14 +535,15 @@ export default ({data})=>{
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
 								<span>
 									अर्जुन मारोती बांगर 
-								</span>
+								</span><br></br>
+								<span>9922923872</span>
 							</Grid>
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 								<span>आईचे नाव ​</span>
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
 								<span>
-									मीरा अर्जुन बांगर 
+									कै.मीरा अर्जुन बांगर 
 								</span>
 							</Grid>
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
@@ -548,7 +551,7 @@ export default ({data})=>{
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
 								<span>
-									प्लॉट न. १८, शिवनगर, शिवनिकेतन टॉवर जवळ, पाईपलाईन रोड, सावेडी, अहमदनगर 
+									प्लॉट न. १८, शिवनगर, शिवनिकेतन टॉवर जवळ, पाईपलाईन रोड, सावेडी, अहमदनगर, ४१४००३
 								</span>
 							</Grid>
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
@@ -578,6 +581,7 @@ export default ({data})=>{
 							</Grid>
 						</Grid>
 					</Grid>
+					<a className= "mt-2" href = "https://rushike-site.web.app/mr/bio">https://rushike-site.web.app/mr/bio</a>
 			</PageLayout>
 	)
 }

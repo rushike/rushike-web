@@ -7,12 +7,6 @@ import { SignInToRequestAccessBanner } from "./RequestAccess"
 
 export const PrivateComponent = ({ access_type, children }) => {
   
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     console.log("INIT METHOD CALLED");
-  //     Firebase.init()
-  //   }
-  // }, [])
   if (
     !Firebase.isAuthenticated() &&
     typeof window !== 'undefined'

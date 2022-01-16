@@ -37,6 +37,7 @@
     "gatsby-plugin-offline": "^3.2.13",
     "gatsby-plugin-preload-link-crossorigin": "^1.0.2",
     "gatsby-plugin-react-helmet": "^3.3.6",
+    "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-sass": "^2.3.6",
     "gatsby-plugin-sharp": "^2.14.4",
     "gatsby-remark-images": "^5.10.0",
@@ -55,7 +56,9 @@
     "react-images": "^1.2.0-beta.7",
     "react-photo-gallery": "^8.0.0",
     "react-responsive-carousel": "^3.2.21",
+    "react-router-dom": "^6.2.1",
     "react-swipeable": "^6.2.0",
+    "redux": "^4.1.2",
     "tls": "0.0.1"
   },
   "devDependencies": {

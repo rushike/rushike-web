@@ -1,18 +1,8 @@
 import React, { useCallback, useState } from "react"
 import { graphql, useStaticQuery} from "gatsby"
-import { PageLayout, PageTitle, WorkHistory } from "../components"
-import { SEO, Utils } from "../utils"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Container from "react-bootstrap/Container"
-import { makeStyles } from '@material-ui/core/styles';
 import { CardHeader, Grid, Card, 
-  CardContent, Typography, Avatar, 
-  IconButton, Paper, LinearProgress,
-  Box, Chip, CardMedia, CardActions
+  CardContent, Typography, Avatar,
 } from "@material-ui/core"
-import Rating from '@material-ui/lab/Rating';
-import Photo from "../components/Photo"
-import Carousel, { ModalGateway, Modal } from "react-images"
 
 export function RightContentEducationItem({title, iconImage, period, under, descriptionList, children, noaction = false}){
     return (

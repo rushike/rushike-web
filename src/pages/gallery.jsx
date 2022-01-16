@@ -84,15 +84,15 @@ export default ({data})=>{
         </TabPanel>
         
         <TabPanel value = {value} index = {1}>
-          <PrivateComponent access_type = "friend">
+          {/* <PrivateComponent access_type = "friend"> */}
             <Gallery photos={with_friends} onClick={openLightbox} renderImage = {Photo} />
-          </PrivateComponent>
+          {/* </PrivateComponent> */}
         </TabPanel>
 
         <TabPanel value = {value} index = {2}>
-          <PrivateComponent access_type = "friend">
+          {/* <PrivateComponent access_type = "friend"> */}
             <Gallery photos={self} onClick={openLightbox} renderImage = {Photo} />
-          </PrivateComponent>
+          {/* </PrivateComponent> */}
         </TabPanel>
           
         

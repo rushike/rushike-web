@@ -1,10 +1,14 @@
 const path = require(`path`)
+const fs = require('fs')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 const requiresTemplate = [`blog`, `projects`]
 
 const getContentType = node =>
-  node.fileAbsolutePath.match(/content(.*)/)[0].split(`/`)[1]
+  {
+    console.log("Node file path : ", node.fileAbsolutePath);
+    return node.fileAbsolutePath.match(/content(.*)/)[0].split(`/`)[1]
+  }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === "MarkdownRemark") {
@@ -25,7 +29,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   // graphql function call returns a promise
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions;
+  
+	createRedirect({
+    fromPath: `/*`,
+    toPath: `/en`
+  });
+
   const result = await graphql(`
     query {
       allMarkdownRemark {
@@ -54,5 +64,25 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }, options) => {
+  const srcPath = options.srcPath || path.resolve(__dirname, 'src')
+  try {
+    const stat = fs.statSync(srcPath)
+    if(!stat.isDirectory) {
+      console.warn(`gatsby-plugin-resolve-src: src path is not a directory ("${srcPath}")`)
+    }
+  } catch(err) {
+    console.warn(`gatsby-plugin-resolve-src: src path not found at "${srcPath}"`)
+  }
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [srcPath, 'node_modules'],
+      alias : {
+        "@components" : path.resolve(srcPath, 'components'),
+      }
+    },
   })
 }

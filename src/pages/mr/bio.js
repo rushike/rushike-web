@@ -18,31 +18,13 @@ import { PageLayout } from "../../components"
 import { SEO } from "../../utils"
 import { RightContentEducationItem, RightContentExperienceItem } from "../../sections/ResumeRightContent"
 
-import "../../styles/global.scss"
-import bioPdf from "../../../static/pdfs/bio.pdf"
-// import "firebase/auth"
-// import "firebase/firestore"
-// import "firebase/functions"
-// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// import { initializeApp } from 'firebase/app';
-	
-// import firebase from "gatsby-plugin-firebase"
+import "../../../static/styles/global.scss"
+import bioPdf from "../../../static/pdfs/bio-data.pdf"
 
-// var admin = require("firebase-admin");
-// require("dotenv").config()
-
-// var serviceAccount = require("D:\\rushike\\secrets\\rushike-site-firebase-adminsdk-a3czq-a38bbb69e6.json");
-// console.log("creds : ", admin.credential.cert(serviceAccount));
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
-// console.log("API KEY : ", process.env.GATSBY_FIREBASE_API_KEY);
-// const app = initializeApp({
-//   });
 function getObjectFromData(data, name){
-    console.log("data: ", data.allDataJson.edges);
+    // console.log("data: ", data.allDataJson.edges);
 	var a = data.allDataJson.edges.filter(v=>v.node.type === name)[0];
-    console.log("a : ", a.node.data, name);
+    // console.log("a : ", a.node.data, name);
     return a.node.data
 }
 
@@ -233,6 +215,38 @@ export default ({data})=>{
 											variant="outlined"
 										/>
 											
+									</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>नोकरी ​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border">
+								<span>
+								<Chip
+									avatar={
+										<Avatar 
+												alt="B"
+												src= {getIconPath("deutsche-bank.png")}
+										/>
+									}
+									label="Deutsche Bank"
+									variant="outlined"
+								/>
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>वार्षिक उत्पन्न ​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border">
+								<span>
+								<Chip
+									avatar={
+										<Avatar 
+										>💸</Avatar>
+									}
+									label="₹ १४ लाख"
+									variant="outlined"
+								/>
 									</span>
 							</Grid>
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
@@ -428,7 +442,7 @@ export default ({data})=>{
 
 						<Grid>
 							<Grid item xs = {12} className = "text-center fw-bold-more content-head border" 
-								// style = {{marginTop : "10rem"}}
+								style = {{marginTop : "10rem"}}
 							>
 								{/* नोकरी  */}
 								नोकरी
@@ -498,10 +512,10 @@ export default ({data})=>{
 											src = {getIconPath("piano.png")}
 										/>
 									}
-									label="Playing Paino"
+									label="Playing Music Instruments"
 									variant="outlined"
 								/>
-								<Chip
+								{/* <Chip
 									avatar={
 										<Avatar
 											alt = "🎸"
@@ -510,7 +524,7 @@ export default ({data})=>{
 									}
 									label="Playing Guitar"
 									variant="outlined"
-								/>
+								/> */}
 								<Chip
 									avatar={
 										<Avatar
@@ -544,6 +558,14 @@ export default ({data})=>{
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
 								<span>
 									कै.मीरा अर्जुन बांगर 
+								</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>बहीण नाव ​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+									नुतन बांगर (B.Sc Animation)
 								</span>
 							</Grid>
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
@@ -582,6 +604,9 @@ export default ({data})=>{
 						</Grid>
 					</Grid>
 					<a className= "mt-2" href = "https://rushike-site.web.app/mr/bio">https://rushike-site.web.app/mr/bio</a>
+					<br/>
+					<a className= "mt-2" href = "https://rushike-site.web.app/gallery">https://rushike-site.web.app/gallery</a>
+
 			</PageLayout>
 	)
 }

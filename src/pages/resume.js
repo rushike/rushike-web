@@ -38,8 +38,6 @@ function getObjectFromData(data, name){
 }
 
 export default ({ data }) => {
-
-  const history = data.allMarkdownRemark.edges || []
   // const images = data.allFile.edges || []
   const images = getObjectFromData(data, "my-photos").photos.filter(v=>!v.hidden).map(v=>({...v, images : v.src}));
   const skills = getObjectFromData(data, "skills").skills;
@@ -358,7 +356,7 @@ export default ({ data }) => {
                   variant="h6"
                   className = "resume-right-content-head"
                 >
-                    Experience
+                  Hobbies
                 </Typography>
 							</Grid>
 							<Grid item xs = {12} className = "fw-bold border">
@@ -422,28 +420,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/work/" } }
-      sort: { fields: [frontmatter___startDate], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          html
-          frontmatter {
-            company
-            location
-            position
-            tags
-            startDate(formatString: "MMMM")
-            endDate(formatString: "MMMM, YYYY")
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
+  
     allFile(
       filter: {
         extension: { eq: "png" }

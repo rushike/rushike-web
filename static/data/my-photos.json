@@ -75,7 +75,14 @@
                 "hidden" : true
             },
             {
-                "src": "../../images/my-photos/daana-paani-beach-cleanup.jpg",
+                "src": "../../images/my-photos/formal-at-top.jpg",
+                "width": 1,
+                "height": 1,
+                "type" : "self",
+                "hidden" : false
+            },
+            {
+                "src": "../../images/my-photos/nanded-2.jpg",
                 "width": 1,
                 "height": 1,
                 "type" : "self",

@@ -115,11 +115,11 @@ export default ({data})=>{
 		<Grid container sx={{ flexGrow: 1 }} className = "container px-4" style = {{padding : "0 1000"}} >
 					<div style = {{position : "absolute"}}>
 						<a href = {bioPdf} download> 
-							<Avatar 
+							{/* <Avatar 
 								alt="rushikesh" src={getIconPath("download.png") 
 								} 
 											
-							>Download Bio</Avatar>
+							>Download Bio</Avatar> */}
 						</a>
 					</div>
 					<Grid item xs = {12}>
@@ -176,7 +176,24 @@ export default ({data})=>{
 																	src= {getIconPath("clock.png")}
 															/>
 													}
-													label="१२:१५ दुपारी"
+													label="१२:४२ दुपारी"
+													variant="outlined"
+											/>
+											</span>
+							</Grid>
+							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+									<span>जन्म नाव </span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+									<span>
+											<Chip
+													avatar={
+															<Avatar 
+																	alt="📛"
+																	// src= {getIconPath("clock.png")}
+															/>
+													}
+													label="योगेश"
 													variant="outlined"
 											/>
 											</span>

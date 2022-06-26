@@ -126,7 +126,7 @@ export default ({data})=>{
 						<Grid container className = "text-center" spacing = {3}>
 							{/* Photo */}
 							<Grid item xs = {12}>
-								<Avatar onClick={(e)=>openLightbox("profile2")} alt="rushikesh" src="../../images/my-photos/Profile2.jpg" 
+								<Avatar onClick={(e)=>openLightbox("profile2")} alt="rushikesh" src="../../images/my-photos/Profile4.jpeg" 
 											className = "resume-profile-photo mx-center medium-img"
 								></Avatar>
 							</Grid>
@@ -164,7 +164,7 @@ export default ({data})=>{
 									</span>
 									
 							</Grid>
-							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+							{/* <Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 									<span>जन्म वेळ </span>
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
@@ -180,8 +180,8 @@ export default ({data})=>{
 													variant="outlined"
 											/>
 											</span>
-							</Grid>
-							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+							</Grid> */}
+							{/* <Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 									<span>जन्म नाव </span>
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
@@ -197,7 +197,7 @@ export default ({data})=>{
 													variant="outlined"
 											/>
 											</span>
-							</Grid>
+							</Grid> */}
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 									<span>जन्म स्थल​</span>
 							</Grid>
@@ -261,7 +261,7 @@ export default ({data})=>{
 										<Avatar 
 										>💸</Avatar>
 									}
-									label="₹ १४ लाख"
+									label="₹ १७ लाख"
 									variant="outlined"
 								/>
 									</span>
@@ -459,7 +459,7 @@ export default ({data})=>{
 
 						<Grid>
 							<Grid item xs = {12} className = "text-center fw-bold-more content-head border" 
-								style = {{marginTop : "10rem"}}
+								style = {{marginTop : "10rem !important"}}
 							>
 								{/* नोकरी  */}
 								नोकरी
@@ -474,8 +474,8 @@ export default ({data})=>{
 									time = "full-time"
 									descriptionList = {[
 										"Job Role : Software Developer",
-										"Location : Magarpatta Pune, (Currently Work From Home)",
-										"Tech Stack : Java, Scala, DevOps, Python"
+										"Location : Magarpatta Pune, (Currently Hybrid Working Model)",
+										"Tech Stack : Spark, Scala, DevOps, Python"
 									]}
 									>
 									</RightContentExperienceItem>
@@ -582,9 +582,19 @@ export default ({data})=>{
 							</Grid>
 							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
 								<span>
-									नुतन बांगर (B.Sc Animation)
+									नुतन बांगर (B.Sc Animation) (Married)
 								</span>
 							</Grid>
+							{/* <Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
+								<span>मामा ​</span>
+							</Grid>
+							<Grid item xs = {8} md = {6} className = "text-left px-2 border fw-bold">
+								<span>
+								 रवींद्र Jaybhay
+								</span>
+								 <br></br> 
+								<span></span>
+							</Grid> */}
 							<Grid item xs = {4} md = {6} className = "text-right px-2 border fw-bold-more">
 								<span>सध्याचा  पत्ता​</span>
 							</Grid>
